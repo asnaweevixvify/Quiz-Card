@@ -5,6 +5,7 @@ const btnAddQuiz = document.getElementById('addQuiz')
 const btnSendQuiz = document.getElementById('sendquiz')
 const nextBtn = document.getElementById('next')
 const previousBtn = document.getElementById('previous')
+const delBtn = document.getElementById('delete')
 let pageCount = document.getElementById('pagecount')
 let quizText = document.getElementById('quiztext')
 let answertext = document.getElementById('answertext')
@@ -13,7 +14,8 @@ let answerAdd = document.getElementById('answer')
 let quizNew;
 let answerNew;
 let count = 0
-let currenPage = 0
+let currenPage = 1
+let index = 0
 let Arrq=[]
 let Arra=[]
 
@@ -39,14 +41,15 @@ btnSendQuiz.addEventListener('click',function(){
         Arrq.push(quizNew)
         Arra.push(answerNew)
         count++
-        pageCount.innerHTML=`${currenPage+1}/${count}`
+        pageCount.innerHTML=`${currenPage}/${count}`
         showQuiz()
     }
 })
 
 function showQuiz(){
+    quizContainer.style.display='flex'
     quizContainer.classList.remove('flipped'); 
-    quizText.innerText=Arrq[currenPage]
+    quizText.innerText=Arrq[index]
     quizText.classList.remove('fade-in');
     void quizText.offsetWidth; 
     quizText.classList.add('fade-in');
@@ -58,7 +61,7 @@ quizContainer.addEventListener('click',showAnswer)
 function showAnswer(){
     quizContainer.classList.toggle('flipped');
     if(quizContainer.classList.contains('quiznowshow')){
-        answertext.innerText=Arra[currenPage]
+        answertext.innerText=Arra[index]
         quizContainer.classList.remove('quiznowshow')
     }
     else{
@@ -67,19 +70,46 @@ function showAnswer(){
 }
 
 nextBtn.addEventListener('click',function(){
-    if(currenPage+1<count){
+    if(currenPage<count){
         currenPage++
-        pageCount.innerHTML=`${currenPage+1}/${count}`
+        index++
+        pageCount.innerHTML=`${currenPage}/${count}`
         showQuiz();
     }
 })
 
 previousBtn.addEventListener('click',function(){
-    if(currenPage>0){
+    if(currenPage>1){
         currenPage--
-        pageCount.innerHTML=`${currenPage+1}/${count}`
+        index--
+        pageCount.innerHTML=`${currenPage}/${count}`
         showQuiz();
     }
 })
 
-
+delBtn.addEventListener('click',function(){
+    Arrq.splice(index,1)
+    Arra.splice(index,1)
+    count--
+    if(index === 0){
+        if(count>0){
+            quizText.innerText=Arrq[index]
+            answertext.innerText=Arra[index]
+            pageCount.innerHTML=`${currenPage}/${count}`
+        }
+        else{
+            quizContainer.style.display='none'
+            quizText.innerText=''
+            answertext.innerText=''
+        }
+    }
+    else{
+        index--
+        quizText.innerText=Arrq[index]
+        answertext.innerText=Arra[index]
+        currenPage--
+        pageCount.innerHTML=`${currenPage}/${count}`
+    }
+    
+})
+console.log(index);

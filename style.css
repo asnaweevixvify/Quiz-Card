@@ -50,6 +50,11 @@ h2{
 i{
     cursor: pointer;
 }
+.fa-trash{
+    position: absolute;
+    left: 600px;
+    top: 150px;
+}
 .nextprevious{
     display: flex;
     justify-content: center;
@@ -103,7 +108,7 @@ input{
 }
 .quiztext{
     text-align: center;
-    margin-top: 170px;
+    margin-top: 120px;
     font-size: 60px;
     justify-content: center;
 }
