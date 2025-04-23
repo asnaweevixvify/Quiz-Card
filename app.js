@@ -19,6 +19,30 @@ let index = 0
 let Arrq=[]
 let Arra=[]
 
+window.onload=function(){
+    Arrq = JSON.parse(localStorage.getItem("ArrqSave")) || [];
+    Arra = JSON.parse(localStorage.getItem("ArraSave")) || [];
+    count = Arrq.length;
+    if (count > 0) {
+        index = 0;
+        currenPage = 1;
+        pageCount.innerHTML = `${currenPage}/${count}`;
+        bgMain.style.display = 'flex';
+        quizContainer.style.display='flex'
+        delBtn.style.display='flex'
+        nextBtn.style.display='flex'
+        previousBtn.style.display='flex'
+        pageCount.style.display='flex'
+        showQuiz();
+    } else {
+        quizContainer.style.display = 'none';
+        delBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        previousBtn.style.display = 'none';
+        pageCount.style.display = 'none';
+    }
+}
+
 btnAddQuiz.addEventListener('click',function(){
     bgMain.style.display='none'
     bgAddQuiz.style.display='flex'
@@ -43,17 +67,23 @@ btnSendQuiz.addEventListener('click',function(){
         count++
         pageCount.innerHTML=`${currenPage}/${count}`
         showQuiz()
+        saveMode()
     }
 })
 
 function showQuiz(){
     quizContainer.style.display='flex'
+    delBtn.style.display='flex'
+    nextBtn.style.display='flex'
+    previousBtn.style.display='flex'
+    pageCount.style.display='flex'
     quizContainer.classList.remove('flipped'); 
     quizText.innerText=Arrq[index]
     quizText.classList.remove('fade-in');
     void quizText.offsetWidth; 
     quizText.classList.add('fade-in');
     quizContainer.classList.add('quiznowshow')
+    saveMode()
 }
 
 quizContainer.addEventListener('click',showAnswer)
@@ -67,6 +97,7 @@ function showAnswer(){
     else{
         quizContainer.classList.add('quiznowshow')
     }
+    saveMode()
 }
 
 nextBtn.addEventListener('click',function(){
@@ -88,6 +119,7 @@ previousBtn.addEventListener('click',function(){
 })
 
 delBtn.addEventListener('click',function(){
+    delBtn.style.pointerEvents = 'none';
     Arrq.splice(index,1)
     Arra.splice(index,1)
     count--
@@ -99,6 +131,10 @@ delBtn.addEventListener('click',function(){
         }
         else{
             quizContainer.style.display='none'
+            delBtn.style.display='none'
+            nextBtn.style.display='none'
+            previousBtn.style.display='none'
+            pageCount.style.display='none'
             quizText.innerText=''
             answertext.innerText=''
         }
@@ -110,6 +146,14 @@ delBtn.addEventListener('click',function(){
         currenPage--
         pageCount.innerHTML=`${currenPage}/${count}`
     }
-    
+    setTimeout(() => {
+        delBtn.style.pointerEvents = 'auto';
+    }, 300);
+    saveMode()
 })
-console.log(index);
+
+function saveMode(){
+    localStorage.setItem("countSave",count)
+    localStorage.setItem("ArrqSave",JSON.stringify(Arrq))
+    localStorage.setItem("ArraSave",JSON.stringify(Arra))
+}
