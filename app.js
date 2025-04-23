@@ -45,24 +45,23 @@ btnSendQuiz.addEventListener('click',function(){
 })
 
 function showQuiz(){
-    quizText.style.display='flex'
+    quizContainer.classList.remove('flipped'); // กลับหน้าการ์ด
     quizText.innerText=Arrq[currenPage]
-    answertext.style.display='none'
+    quizText.classList.remove('fade-in');
+    void quizText.offsetWidth; // รีเซต animation
+    quizText.classList.add('fade-in');
     quizContainer.classList.add('quiznowshow')
 }
 
 quizContainer.addEventListener('click',showAnswer)
 
 function showAnswer(){
+    quizContainer.classList.toggle('flipped');
     if(quizContainer.classList.contains('quiznowshow')){
-        quizText.style.display='none'
         answertext.innerText=Arra[currenPage]
-        answertext.style.display='flex'
         quizContainer.classList.remove('quiznowshow')
     }
     else{
-        answertext.style.display='none'
-        quizText.style.display='flex'
         quizContainer.classList.add('quiznowshow')
     }
 }
