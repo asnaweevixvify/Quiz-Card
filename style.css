@@ -1,0 +1,118 @@
+*{
+    padding:0;
+    margin: 0;
+}
+body{
+    background-color: cadetblue;
+}
+h1{
+    font-family: 'kanit';
+    font-weight: 400;
+}
+.main{
+    text-align: center;
+    margin-top: 40px;
+    color: white;
+    font-size: 60px;
+}
+.button{
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    font-family: 'kanit';
+    font-weight: 400;
+    position: absolute;
+    right: 650px;
+    top: 75px;
+    cursor: pointer;
+}
+.bg{
+    display: none;
+}
+.quizcontainer{
+    width: 700px;
+    height: 550px;
+    background-color: white;
+    border: 1px solid  transparent;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    cursor: pointer;
+}
+h2{
+    font-family: 'kanit';
+    font-weight: 400;
+    color: white;
+    margin-top: -23px;
+    font-size: 30px;
+}
+i{
+    cursor: pointer;
+}
+.nextprevious{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    gap: 30px;
+    position: absolute;
+    bottom: 70px;
+    left: 900px;
+}
+.bgadd{
+    width: 700px;
+    height: 550px;
+    background-color: white;
+    border: 1px solid  transparent;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    display: none;
+}
+.topic{
+    text-align: center;
+    margin-top: 60px;
+}
+h3{
+    font-family: 'kanit';
+    font-weight: 400;
+    margin-top: 30px;
+    margin-left: 100px;
+}
+input{
+    width: 500px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+}
+.addquiz{
+    width: 100px;
+    height: 40px;
+    margin-top: 30px;
+    border: 1px solid  transparent;
+    border-radius: 15px;
+    font-family: 'kanit';
+    font-weight: 400;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+.quiztext{
+    text-align: center;
+    margin-top: 170px;
+    font-size: 60px;
+    justify-content: center;
+}
+.answertext{
+    text-align: center;
+    margin-top: 170px;
+    font-size: 60px;
+}
+.alert{
+    font-size: 25px;
+}
+
