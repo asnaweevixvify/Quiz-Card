@@ -45,10 +45,10 @@ btnSendQuiz.addEventListener('click',function(){
 })
 
 function showQuiz(){
-    quizContainer.classList.remove('flipped'); // กลับหน้าการ์ด
+    quizContainer.classList.remove('flipped'); 
     quizText.innerText=Arrq[currenPage]
     quizText.classList.remove('fade-in');
-    void quizText.offsetWidth; // รีเซต animation
+    void quizText.offsetWidth; 
     quizText.classList.add('fade-in');
     quizContainer.classList.add('quiznowshow')
 }

@@ -115,7 +115,6 @@ input{
 .alert{
     font-size: 25px;
 }
-/* --- เอฟเฟกต์ flip เฉลย --- */
 .quizcontainer {
     perspective: 1000px;
     transform-style: preserve-3d;
@@ -127,7 +126,6 @@ input{
     transform: rotateY(180deg);
   }
   
-  /* หน้า & หลังของการ์ด */
   #quiztext, #answertext {
     position: absolute;
     width: 100%;
@@ -149,7 +147,6 @@ input{
     background-color: white;
   }
   
-  /* --- เอฟเฟกต์ fade in ตอนเปลี่ยนคำถาม --- */
   .fade-in {
     animation: fadeIn 0.5s ease;
   }
